@@ -1,4 +1,4 @@
-package eu.aperaverzeu.productsservice.controller;
+package eu.aperaverz.productsservice.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package eu.aperaverzeu.discoveryserver;
+package eu.aperaverz.discoveryserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

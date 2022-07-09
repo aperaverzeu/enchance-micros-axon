@@ -1,4 +1,4 @@
-package eu.aperaverzeu.discoveryserver;
+package eu.aperaverz.discoveryserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

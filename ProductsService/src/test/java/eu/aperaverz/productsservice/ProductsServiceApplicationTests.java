@@ -1,4 +1,4 @@
-package eu.aperaverzeu.productsservice;
+package eu.aperaverz.productsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

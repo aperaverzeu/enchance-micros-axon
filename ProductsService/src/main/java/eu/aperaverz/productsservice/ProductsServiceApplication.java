@@ -1,4 +1,4 @@
-package eu.aperaverzeu.productsservice;
+package eu.aperaverz.productsservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
