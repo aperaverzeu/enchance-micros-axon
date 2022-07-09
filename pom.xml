@@ -11,6 +11,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>ApiGateway</module>
+        <module>DiscoveryServer</module>
         <module>ProductsService</module>
     </modules>
 
