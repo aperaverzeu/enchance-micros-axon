@@ -12,7 +12,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>eu.aperaverzeu</groupId>
+	<groupId>eu.aperaverz</groupId>
 	<artifactId>ProductsService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
