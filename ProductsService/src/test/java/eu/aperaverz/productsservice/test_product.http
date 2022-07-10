@@ -7,3 +7,6 @@ Content-Type: application/json
   "price": 365,
   "amount": 1500
 }
+
+### Get all
+GET http://localhost:8082/products-service/products
