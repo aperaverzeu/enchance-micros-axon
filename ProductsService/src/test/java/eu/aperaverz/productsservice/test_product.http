@@ -1,5 +1,5 @@
 ### Create
-POST http://localhost:8082/products/products
+POST http://localhost:8082/products-service/products
 Content-Type: application/json
 
 {
