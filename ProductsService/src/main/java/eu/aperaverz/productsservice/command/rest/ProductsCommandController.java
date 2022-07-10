@@ -6,6 +6,7 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -18,7 +19,7 @@ public class ProductsCommandController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createProduct(@RequestBody CreateProductRestModule createProductRestModule) {
+    public ResponseEntity<String> createProduct(@Valid @RequestBody CreateProductRestModule createProductRestModule) {
         var createProductCommand = CreateProductCommand.builder()
                 .price(createProductRestModule.getPrice())
                 .amount(createProductRestModule.getAmount())
