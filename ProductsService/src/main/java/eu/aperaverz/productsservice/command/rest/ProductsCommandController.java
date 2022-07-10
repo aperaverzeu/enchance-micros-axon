@@ -1,7 +1,7 @@
-package eu.aperaverz.productsservice.controller;
+package eu.aperaverz.productsservice.command.rest;
 
 import eu.aperaverz.productsservice.command.CreateProductCommand;
-import eu.aperaverz.productsservice.model.CreateProductRestModule;
+import eu.aperaverz.productsservice.core.model.CreateProductRestModule;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +11,13 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
-public class ProductsController {
+public class ProductsCommandController {
 
     private final Environment environment;
     private final CommandGateway commandGateway;
 
-    public ProductsController(Environment environment,
-                              CommandGateway commandGateway) {
+    public ProductsCommandController(Environment environment,
+                                     CommandGateway commandGateway) {
         this.environment = environment;
         this.commandGateway = commandGateway;
     }

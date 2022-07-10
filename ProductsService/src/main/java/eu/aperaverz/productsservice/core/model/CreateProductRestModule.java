@@ -1,4 +1,4 @@
-package eu.aperaverz.productsservice.model;
+package eu.aperaverz.productsservice.core.model;
 
 import lombok.Builder;
 import lombok.Data;
