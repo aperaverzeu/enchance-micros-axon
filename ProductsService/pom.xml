@@ -23,7 +23,7 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.3</spring-cloud.version>
 		<spring-cloud.eureka.client.version>3.1.3</spring-cloud.eureka.client.version>
-		<axon.server.version>4.5.10</axon.server.version>
+		<axon.framework.version>4.5.10</axon.framework.version>
 		<google.guava.version>31.1-jre</google.guava.version>
 		<h2.database.version>2.1.214</h2.database.version>
 	</properties>
@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-spring-boot-starter</artifactId>
-			<version>${axon.server.version}</version>
+			<version>${axon.framework.version}</version>
 		</dependency>
 
 		<dependency>
