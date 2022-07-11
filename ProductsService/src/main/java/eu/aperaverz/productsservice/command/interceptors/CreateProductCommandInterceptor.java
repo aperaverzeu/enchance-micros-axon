@@ -1,7 +1,6 @@
 package eu.aperaverz.productsservice.command.interceptors;
 
 import eu.aperaverz.productsservice.command.CreateProductCommand;
-import eu.aperaverz.productsservice.core.data.ProductLookupEntity;
 import eu.aperaverz.productsservice.core.data.ProductLookupRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandMessage;
@@ -21,7 +20,6 @@ public class CreateProductCommandInterceptor implements MessageDispatchIntercept
     }
 
     @Override
-    @SuppressWarnings("unused")
     public BiFunction<Integer, CommandMessage<?>, CommandMessage<?>> handle(List<? extends CommandMessage<?>> list) {
         return (index, command) -> {
 
@@ -30,9 +28,9 @@ public class CreateProductCommandInterceptor implements MessageDispatchIntercept
             if (CreateProductCommand.class.equals(command.getPayloadType())) {
                 CreateProductCommand createProductCommand = (CreateProductCommand) command.getPayload();
 
-                ProductLookupEntity productLookupEntity = productLookupRepository
+                productLookupRepository
                         .findByProductIdOrTitle(createProductCommand.getProductId(), createProductCommand.getTitle())
-                        .orElseThrow(() -> {
+                        .ifPresent(foundedValue -> {
                             throw new IllegalStateException(
                                     String.format("Product with productId %s of title %s already exists",
                                             createProductCommand.getProductId(),
