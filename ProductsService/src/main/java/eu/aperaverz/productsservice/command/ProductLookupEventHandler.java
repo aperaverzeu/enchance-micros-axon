@@ -24,6 +24,5 @@ public class ProductLookupEventHandler {
                 .build();
 
         productLookupRepository.save(productLookupEntity);
-
     }
 }

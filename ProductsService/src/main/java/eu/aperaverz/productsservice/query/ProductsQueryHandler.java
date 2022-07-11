@@ -1,6 +1,5 @@
 package eu.aperaverz.productsservice.query;
 
-import eu.aperaverz.productsservice.core.data.ProductEntity;
 import eu.aperaverz.productsservice.core.data.ProductsRepository;
 import eu.aperaverz.productsservice.query.model.ProductRestModel;
 import org.axonframework.queryhandling.QueryHandler;
@@ -22,13 +21,13 @@ public class ProductsQueryHandler {
     public List<ProductRestModel> getProducts(FindProductsQuery findProductsQuery) {
         List<ProductRestModel> productRestModels = new ArrayList<>();
 
-        List<ProductEntity> storedProducts = productsRepository.findAll();
-
-        storedProducts.forEach(storedProduct -> {
-            ProductRestModel productRestModel = new ProductRestModel();
-            BeanUtils.copyProperties(storedProduct, productRestModel);
-            productRestModels.add(productRestModel);
-        });
+        productsRepository
+                .findAll()
+                .forEach(storedProduct -> {
+                    ProductRestModel productRestModel = new ProductRestModel();
+                    BeanUtils.copyProperties(storedProduct, productRestModel);
+                    productRestModels.add(productRestModel);
+                });
 
         return productRestModels;
     }

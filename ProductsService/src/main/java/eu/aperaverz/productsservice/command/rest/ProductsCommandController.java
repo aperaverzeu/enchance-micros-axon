@@ -27,23 +27,8 @@ public class ProductsCommandController {
                 .productId(UUID.randomUUID().toString())
                 .build();
 
-        String result;
+        String result = commandGateway.sendAndWait(createProductCommand);
 
-        try {
-            result = commandGateway.sendAndWait(createProductCommand);
-        } catch (Exception exception) {
-            result = exception.getLocalizedMessage();
-        }
         return ResponseEntity.ok().body(result);
-    }
-
-    @PutMapping
-    public ResponseEntity<String> updateProduct() {
-        return ResponseEntity.ok().body("Put!");
-    }
-
-    @DeleteMapping
-    public ResponseEntity<String> deleteProduct() {
-        return ResponseEntity.ok().body("Delete!");
     }
 }
