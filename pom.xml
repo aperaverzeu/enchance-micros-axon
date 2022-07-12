@@ -13,6 +13,7 @@
     <modules>
         <module>ApiGateway</module>
         <module>DiscoveryServer</module>
+        <module>OrdersService</module>
         <module>ProductsService</module>
     </modules>
 
