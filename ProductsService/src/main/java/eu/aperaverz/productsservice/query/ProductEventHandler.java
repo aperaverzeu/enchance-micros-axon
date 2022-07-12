@@ -30,15 +30,11 @@ public class ProductEventHandler {
     }
 
     @EventHandler
-    public void on(ProductCreatedEvent productCreatedEvent) throws Exception {
+    public void on(ProductCreatedEvent productCreatedEvent) {
         ProductEntity productEntity = new ProductEntity();
 
         BeanUtils.copyProperties(productCreatedEvent, productEntity);
 
         productsRepository.save(productEntity);
-
-        if (true) {
-            throw new Exception("new to this");
-        }
     }
 }
