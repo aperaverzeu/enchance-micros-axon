@@ -9,5 +9,5 @@ public class ProductCreatedEvent {
     String productId;
     String title;
     BigDecimal price;
-    Integer amount;
+    Integer quantity;
 }

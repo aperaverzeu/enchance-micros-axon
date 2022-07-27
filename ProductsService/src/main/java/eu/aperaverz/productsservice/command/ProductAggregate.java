@@ -1,5 +1,7 @@
 package eu.aperaverz.productsservice.command;
 
+import eu.aperaverz.core.commands.ReserveProductCommand;
+import eu.aperaverz.core.events.ProductReservedEvent;
 import eu.aperaverz.productsservice.core.events.ProductCreatedEvent;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
@@ -18,7 +20,7 @@ public class ProductAggregate {
     String productId;
     String title;
     BigDecimal price;
-    Integer amount;
+    Integer quantity;
 
     @CommandHandler
     public ProductAggregate(CreateProductCommand command) {
@@ -39,11 +41,32 @@ public class ProductAggregate {
         AggregateLifecycle.apply(productCreatedEvent);
     }
 
+    @CommandHandler
+    public void handle(ReserveProductCommand reserveProductCommand) {
+        if (quantity < reserveProductCommand.getQuantity()) {
+            throw new IllegalArgumentException("Insufficient number of goods");
+        }
+
+        ProductReservedEvent productReservedEvent = ProductReservedEvent.builder()
+                .orderId(reserveProductCommand.getOrderId())
+                .productId(reserveProductCommand.getProductId())
+                .quantity(reserveProductCommand.getQuantity())
+                .userId(reserveProductCommand.getUserId())
+                .build();
+
+        AggregateLifecycle.apply(productReservedEvent);
+    }
+
     @EventSourcingHandler
     public void on(ProductCreatedEvent productCreatedEvent) {
         this.productId = productCreatedEvent.getProductId();
         this.title = productCreatedEvent.getTitle();
         this.price = productCreatedEvent.getPrice();
-        this.amount = productCreatedEvent.getAmount();
+        this.quantity = productCreatedEvent.getQuantity();
+    }
+
+    @EventSourcingHandler
+    public void on(ProductReservedEvent productReservedEvent) {
+        this.quantity -= productReservedEvent.getQuantity();
     }
 }

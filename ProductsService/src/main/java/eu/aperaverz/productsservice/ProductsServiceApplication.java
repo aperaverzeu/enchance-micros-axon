@@ -3,7 +3,6 @@ package eu.aperaverz.productsservice;
 import eu.aperaverz.productsservice.command.interceptors.CreateProductCommandInterceptor;
 import eu.aperaverz.productsservice.core.errorhandling.ProductsServiceEventsErrorHandler;
 import org.axonframework.commandhandling.CommandBus;
-import org.axonframework.config.EventProcessingConfiguration;
 import org.axonframework.config.EventProcessingConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

@@ -12,6 +12,7 @@
 
     <modules>
         <module>ApiGateway</module>
+        <module>Core</module>
         <module>DiscoveryServer</module>
         <module>OrdersService</module>
         <module>ProductsService</module>

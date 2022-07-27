@@ -1,8 +1,10 @@
 package eu.aperaverz.productsservice.query;
 
+import eu.aperaverz.core.events.ProductReservedEvent;
 import eu.aperaverz.productsservice.core.data.ProductEntity;
 import eu.aperaverz.productsservice.core.data.ProductsRepository;
 import eu.aperaverz.productsservice.core.events.ProductCreatedEvent;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ProcessingGroup("product-group")
+@Slf4j
 public class ProductEventHandler {
 
     private final ProductsRepository productsRepository;
@@ -36,5 +39,18 @@ public class ProductEventHandler {
         BeanUtils.copyProperties(productCreatedEvent, productEntity);
 
         productsRepository.save(productEntity);
+    }
+
+    @EventHandler
+    public void on(ProductReservedEvent productReservedEvent) {
+        productsRepository
+                .findByProductId(productReservedEvent.getProductId())
+                .ifPresent(productEntity -> {
+                    productEntity.setQuantity(productEntity.getQuantity() - productReservedEvent.getQuantity());
+                    productsRepository.save(productEntity);
+                });
+
+        log.info("ProductReservedEvent is called for productId: " + productReservedEvent.getProductId() +
+                " and orderId: " + productReservedEvent.getOrderId());
     }
 }
