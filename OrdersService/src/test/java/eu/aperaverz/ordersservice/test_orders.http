@@ -3,7 +3,7 @@ POST http://localhost:8082/orders-service/orders
 Content-Type: application/json
 
 {
-  "productId": "f241af45-4854-43f4-95bc-ab54da338a29",
+  "productId": "9be15e58-b79e-424f-a7c5-88b1095ee909",
   "quantity": 1,
   "addressId": "afbb5881-a872-4d13-993c-faeb8350eea5"
 }

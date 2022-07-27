@@ -3,9 +3,9 @@ POST http://localhost:8082/products-service/products
 Content-Type: application/json
 
 {
-  "title": "CD",
-  "price": 365,
-  "amount": 1500
+  "title": "Mac",
+  "price": 7886,
+  "amount": 23
 }
 
 ### Get all
